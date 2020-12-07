@@ -7,6 +7,9 @@
     <Filter Include="system\window">
       <UniqueIdentifier>{b3e0c1a7-41f8-4d75-a838-a38275c9fad9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\exception">
+      <UniqueIdentifier>{f88887ae-da4a-43be-a19e-42ede9d8d97e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -18,6 +21,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>system\window</Filter>
     </ClCompile>
+    <ClCompile Include="EngineException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowsMessageMap.h">
@@ -29,5 +33,6 @@
     <ClInclude Include="Window.h">
       <Filter>system\window</Filter>
     </ClInclude>
+    <ClInclude Include="EngineException.hpp" />
   </ItemGroup>
 </Project>

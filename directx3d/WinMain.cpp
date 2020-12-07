@@ -2,48 +2,8 @@
 #include <exception>
 #include <sstream>
 #include "WindowsMessageMap.h"
-
-
-LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-	static WindowsMessageMap mm;
-	OutputDebugStringA(mm(msg, lParam, wParam).c_str());
-
-	switch (msg)
-	{
-	case WM_CLOSE:
-		PostQuitMessage(EXIT_SUCCESS);
-		break;
-	case WM_KEYDOWN:
-	{
-
-	}
-	break;
-	case WM_KEYUP:
-	{
-
-	}
-	break;
-	case WM_CHAR:
-	{
-
-	}
-	break;
-	case WM_LBUTTONDOWN:
-	{
-		const POINTS pt = MAKEPOINTS(lParam);
-		std::ostringstream oss;
-		oss << "(" << pt.x << ", " << pt.y << ")\n";
-		SetWindowTextA(hWnd, oss.str().c_str());
-	}
-	break;
-	case WM_LBUTTONUP:
-	{
-
-	}
-	}
-	return DefWindowProc(hWnd, msg, wParam, lParam);
-}
+#include "Window.h"
+#include "EngineException.hpp"
 
 int CALLBACK WinMain(
 								// CALLBACK #define для stdcall(соглашение для вызовов, вызываемый объект будет сам за собой очищать стек)
@@ -52,49 +12,10 @@ int CALLBACK WinMain(
 	LPSTR		lpCmdLine,		// команды
 	int			nCmdShow)		// параметр отвечающий за то как будет показываться окно (свёрнуто, развёрнуто, на весь экран и т.д.).
 {
-	const auto pClassName = L"directx3d_window";
-	// register window class
-	WNDCLASSEX wc = {0};
-	wc.cbSize = sizeof(wc);
-	wc.cbClsExtra = 0;
-	wc.cbWndExtra = 0;
-	wc.style = CS_OWNDC;
-	wc.hInstance = hInstance;
-	wc.lpszClassName = pClassName;
-	wc.lpfnWndProc = WndProc; 
-	wc.hIcon = nullptr;
-	wc.hCursor = nullptr;
-	wc.hbrBackground = nullptr;
-	wc.lpszMenuName = nullptr;
-	wc.hIconSm = nullptr;
-
-	if (!RegisterClassEx(&wc))
+	try
 	{
-		throw std::exception("Error to register window");
-	}
-
-	// create window instance
-	HWND hWnd = CreateWindowEx(
-		0, 
-		pClassName,
-		L"directx3d",
-		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
-		200, 200,
-		640, 480,
-		nullptr,
-		nullptr,
-		hInstance,
-		nullptr
-	);
-	if (hWnd == INVALID_HANDLE_VALUE)
-	{
-		throw std::exception("Error to create window");
-	}
-
-	// show window
-	ShowWindow(hWnd, SW_SHOW);
-
-	// message
+	Window wnd(800, 300, L"direcWindow");
+	Window wnd2(300, 100, L"direcWindow2");
 
 	MSG msg;
 	BOOL gResult;
@@ -105,6 +26,19 @@ int CALLBACK WinMain(
 	}
 	if (gResult == -1)
 		return -1;
-	else
-		return static_cast<int>(msg.wParam);
+	return 0;
+	}
+	catch (const EngineException& e)
+	{
+		MessageBoxA(nullptr, e.what(), e.GetType(), MB_OK | MB_ICONEXCLAMATION);
+	}
+	catch (const std::exception& e)
+	{
+		MessageBoxA(nullptr, e.what(), "Standard Exception", MB_OK | MB_ICONEXCLAMATION);
+	}
+	catch (...)
+	{
+		MessageBoxA(nullptr, "No info", "Unknown Exception", MB_OK | MB_ICONEXCLAMATION);
+	}
+	return -1;
 }

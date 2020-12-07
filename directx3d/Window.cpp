@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <sstream>
 
 Window::WindowClass Window::WindowClass::wndClass;
 
@@ -41,6 +42,8 @@ HINSTANCE Window::WindowClass::GetInstance() noexcept
 // Window Stuff
 Window::Window(int width, int height, const wchar_t* name) noexcept
 {
+	this->width = width;
+	this->height = height;
 	// calculate window size based on desired client region size
 	RECT wr;
 	wr.left = 100;
@@ -66,20 +69,20 @@ Window::~Window()
 
 LRESULT CALLBACK Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {
-	// use create parameter passed in from CreateWindow() to store window class pointer at WinAPI side
+	// использовать параметр create, переданный из CreateWindow (), чтобы сохранить указатель класса окна на стороне WinAPI
 	if (msg == WM_NCCREATE)
 	{
-		// extract ptr to window class from creation data
+		// извлекаем ptr в класс окна из данных создания
 		const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
 		Window* const pWnd = static_cast<Window*>(pCreate->lpCreateParams);
-		// set WinAPI-managed user data to store ptr to window class
+		// устанавливаем пользовательские данные под управлением WinAPI для хранения ptr в классе окна
 		SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWnd));
-		// set message proc to normal (non-setup) handler now that setup is finished
+		// теперь, когда настройка завершена, устанавливаем обработчик сообщений в обычный (не настраиваемый) обработчик
 		SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&Window::HandleMsgThunk));
-		// forward message to window class handler
+		// пересылаем сообщение обработчику класса окна
 		return pWnd->HandleMsg(hWnd, msg, wParam, lParam);
 	}
-	// if we get a message before the WM_NCCREATE message, handle with default handler
+	// если мы получим сообщение до сообщения WM_NCCREATE, обработаем обработчиком по умолчанию
 	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 
@@ -103,4 +106,56 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
+}
+
+Window::Exception::Exception(int line, const char* file, HRESULT hr) noexcept
+	:
+	EngineException(line,file),
+	hr(hr)
+{}
+
+const char* Window::Exception::what() const noexcept
+{
+	
+	std::stringstream oss;
+	oss << GetType() << std::endl
+		<< "[Error Code] " << GetErrorCode() << std::endl
+		<< "[Description ]" << GetErrorString() // << std::endl
+		<< GetOriginString();
+	whatBuffer = oss.str();
+	return whatBuffer.c_str();
+
+}
+
+const char* Window::Exception::GetType() const noexcept
+{
+	return "Window Engine Exception";
+}
+
+std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept
+{
+	char* pMsgBuf = nullptr;
+	DWORD nMsgLen = FormatMessageA(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+		nullptr, hr, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		reinterpret_cast<LPSTR>(&pMsgBuf), 0, nullptr
+	);
+	if (nMsgLen == 0)
+	{
+		return "Unknown error code";
+	}
+	std::string errorString = pMsgBuf;
+	LocalFree(pMsgBuf);
+	return errorString;
+}
+
+HRESULT Window::Exception::GetErrorCode() const noexcept
+{
+	return hr;
+}
+
+std::string Window::Exception::GetErrorString() const noexcept
+{
+	return TranslateErrorCode(hr);
 }

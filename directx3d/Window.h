@@ -1,9 +1,22 @@
 #pragma once
 #include "config.h"
-
+#include "EngineException.hpp"
 
 class Window
 {
+public:
+	class Exception : public EngineException
+	{
+	public:
+		Exception(int line, const char* file, HRESULT hr) noexcept;
+		const char* what() const noexcept override;
+		virtual const char* GetType() const noexcept override;
+		static std::string TranslateErrorCode(HRESULT hr) noexcept;
+		HRESULT GetErrorCode() const noexcept;
+		std::string GetErrorString() const noexcept;
+	private:
+		HRESULT hr;
+	};
 private:
 	// singleton
 	class WindowClass
@@ -17,7 +30,7 @@ private:
 		WindowClass(const WindowClass&) = delete;
 		WindowClass& operator=(const WindowClass&) = delete;
 
-		static constexpr const wchar_t* wndClassName = L"Chili Direct3D Engine Window";
+		static constexpr const wchar_t* wndClassName = L"Direct3D Engine Window";
 		static WindowClass wndClass;
 		HINSTANCE hInst;
 	};
@@ -36,3 +49,5 @@ private:
 	HWND hWnd;
 };
 
+// helper macro
+#define WND_EXCEPT(hr) Window::Exception(__LINE__,__FILE__,hr)

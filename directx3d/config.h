@@ -3,9 +3,9 @@
 // target Windows 7 or later
 #define _WIN32_WINNT 0x0601
 #include <sdkddkver.h>
-// The following #defines disable a bunch of unused windows stuff. If you 
-// get weird errors when trying to do some windows stuff, try removing some
-// (or all) of these defines (it will increase build time though).
+// Следующие #defines отключают кучу неиспользуемых вещей Windows. если ты
+// получаем странные ошибки при попытке сделать что-то с Windows, попробуйте удалить некоторые
+// (или все) из этих определений (хотя это увеличит время сборки).
 #define WIN32_LEAN_AND_MEAN
 #define NOGDICAPMASKS
 #define NOSYSMETRICS
