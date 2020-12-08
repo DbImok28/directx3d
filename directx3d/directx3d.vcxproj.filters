@@ -10,6 +10,9 @@
     <Filter Include="system\exception">
       <UniqueIdentifier>{f88887ae-da4a-43be-a19e-42ede9d8d97e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\resources">
+      <UniqueIdentifier>{8d2f26a1-5703-482c-b0df-b1ba27382ad7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -21,18 +24,35 @@
     <ClCompile Include="Window.cpp">
       <Filter>system\window</Filter>
     </ClCompile>
-    <ClCompile Include="EngineException.cpp" />
+    <ClCompile Include="EngineException.cpp">
+      <Filter>system\exception</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="WindowsMessageMap.h">
-      <Filter>system\window</Filter>
-    </ClInclude>
     <ClInclude Include="config.h">
       <Filter>system</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="EngineException.hpp">
+      <Filter>system\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>system\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.hpp">
       <Filter>system\window</Filter>
     </ClInclude>
-    <ClInclude Include="EngineException.hpp" />
+    <ClInclude Include="WindowsMessageMap.hpp">
+      <Filter>system\window</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="directx_12_logo.ico">
+      <Filter>system\resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="directx3d.rc">
+      <Filter>system\resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

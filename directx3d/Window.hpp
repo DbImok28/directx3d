@@ -22,7 +22,7 @@ private:
 	class WindowClass
 	{
 	public:
-		static const wchar_t* GetName() noexcept;
+		static const char* GetName() noexcept;
 		static HINSTANCE GetInstance() noexcept;
 	private:
 		WindowClass() noexcept;
@@ -30,12 +30,12 @@ private:
 		WindowClass(const WindowClass&) = delete;
 		WindowClass& operator=(const WindowClass&) = delete;
 
-		static constexpr const wchar_t* wndClassName = L"Direct3D Engine Window";
+		static constexpr const char* wndClassName = "Direct3D Engine Window";
 		static WindowClass wndClass;
 		HINSTANCE hInst;
 	};
 public:
-	Window(int width, int height, const wchar_t* name) noexcept;
+	Window(int width, int height, const char* name) noexcept;
 	~Window();
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
@@ -50,4 +50,5 @@ private:
 };
 
 // helper macro
-#define WND_EXCEPT(hr) Window::Exception(__LINE__,__FILE__,hr)
+#define WND_EXCEPT(hr) Window::Exception(__LINE__, __FILE__, hr)
+#define WND_LAST_EXCEPT(hr) Window::Exception(__LINE__, __FILE__, GetLastError())

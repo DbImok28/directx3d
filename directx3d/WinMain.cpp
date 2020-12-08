@@ -5,6 +5,7 @@
 #include "Window.h"
 #include "EngineException.hpp"
 
+
 int CALLBACK WinMain(
 								// CALLBACK #define для stdcall(соглашение для вызовов, вызываемый объект будет сам за собой очищать стек)
 	HINSTANCE	hInstance,		// указатель на начало исполняемого модуля, мз сигнатуры
@@ -14,8 +15,8 @@ int CALLBACK WinMain(
 {
 	try
 	{
-	Window wnd(800, 300, L"direcWindow");
-	Window wnd2(300, 100, L"direcWindow2");
+	Window wnd(800, 300, "direcWindow");
+	Window wnd2(300, 100, "direcWindow2");
 
 	MSG msg;
 	BOOL gResult;
