@@ -39,7 +39,6 @@ HINSTANCE Window::WindowClass::GetInstance() noexcept
 	return wndClass.hInst;
 }
 
-
 // Window Stuff
 Window::Window(int width, int height, const char* name) : width(width), height(height)
 {
@@ -75,6 +74,21 @@ void Window::SetTitle(const std::string title)
 	{
 		throw WND_LAST_EXCEPT();
 	}
+}
+
+std::optional<int> Window::ProcessMessages()
+{
+	MSG msg;
+
+	while (PeekMessage(&msg,nullptr,0,0,PM_REMOVE))
+	{
+		if (msg.message == WM_QUIT)
+			return static_cast<int>(msg.wParam);
+
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+	return{};
 }
 
 LRESULT CALLBACK Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept

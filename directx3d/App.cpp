@@ -1,4 +1,6 @@
 #include "App.hpp"
+#include <sstream>
+#include <iomanip>
 
 App::App(int width, int height, const char* name) : wnd(width, height, name)
 {
@@ -7,22 +9,22 @@ App::App(int width, int height, const char* name) : wnd(width, height, name)
 
 int App::Start()
 {
-	MSG msg;
-	BOOL gResult;
-	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) != FALSE)
+	while (true)
 	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-
+		if (const auto ecode = Window::ProcessMessages())
+		{
+			return *ecode;
+		}
 		Frame();
 	}
-	if (gResult == -1)
-	{
-		throw WND_LAST_EXCEPT();
-	}
-	return msg.wParam;
+	
 }
 
 void App::Frame()
 {
+	const float t = timer.Peek();
+
+	std::ostringstream oss;
+	oss << "time: " <<std::setprecision(1) << std::fixed <<t<< "s";
+	wnd.SetTitle(oss.str());
 }
