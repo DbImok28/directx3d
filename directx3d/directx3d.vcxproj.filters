@@ -45,6 +45,7 @@
     <ClCompile Include="App.cpp">
       <Filter>system\app</Filter>
     </ClCompile>
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -71,6 +72,7 @@
     <ClInclude Include="App.hpp">
       <Filter>system\app</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx_12_logo.ico">

@@ -1,7 +1,11 @@
 #pragma once
 
 // target Windows 7 or later
-#define _WIN32_WINNT 0x0601
+#ifndef _WIN32_WINNT
+	#define _WIN32_WINNT 0x0601
+#endif
+
+
 #include <sdkddkver.h>
 // Следующие #defines отключают кучу неиспользуемых вещей Windows. если ты
 // получаем странные ошибки при попытке сделать что-то с Windows, попробуйте удалить некоторые
@@ -41,6 +45,8 @@
 #define NOIMAGE
 #define NOTAPE
 
-#define STRICT
+#ifndef STRICT
+	#define STRICT
+#endif
 
 #include <Windows.h>
