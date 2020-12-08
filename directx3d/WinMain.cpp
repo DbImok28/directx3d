@@ -1,8 +1,8 @@
 #include <Windows.h>
 #include <exception>
 #include <sstream>
-#include "WindowsMessageMap.h"
-#include "Window.h"
+#include "WindowsMessageMap.hpp"
+#include "Window.hpp"
 #include "EngineException.hpp"
 
 
@@ -15,8 +15,7 @@ int CALLBACK WinMain(
 {
 	try
 	{
-	Window wnd(800, 300, "direcWindow");
-	Window wnd2(300, 100, "direcWindow2");
+	Window wnd(800, 600, "directWindow");
 
 	MSG msg;
 	BOOL gResult;
@@ -24,6 +23,10 @@ int CALLBACK WinMain(
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
+		if (wnd.kbd.KeyIsPressed(VK_SPACE))
+		{
+			MessageBox(nullptr, "bla-bla-bla", "aga", MB_OK);
+		}
 	}
 	if (gResult == -1)
 		return -1;

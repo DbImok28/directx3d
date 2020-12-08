@@ -13,6 +13,9 @@
     <Filter Include="system\resources">
       <UniqueIdentifier>{8d2f26a1-5703-482c-b0df-b1ba27382ad7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\keyboard">
+      <UniqueIdentifier>{a9d6871b-ce63-44e1-bd54-f6158a05a547}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -26,6 +29,9 @@
     </ClCompile>
     <ClCompile Include="EngineException.cpp">
       <Filter>system\exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>system\keyboard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="WindowsMessageMap.hpp">
       <Filter>system\window</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.hpp">
+      <Filter>system\keyboard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

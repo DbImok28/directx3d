@@ -1,4 +1,4 @@
-#include "WindowsMessageMap.h"
+#include "WindowsMessageMap.hpp"
 #include <Windows.h>
 #include <string>
 #include <sstream>
