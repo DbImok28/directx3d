@@ -2,10 +2,7 @@
 #include <sstream>
 #include <iomanip>
 
-App::App(int width, int height, const char* name) : wnd(width, height, name)
-{
-
-}
+App::App(int width, int height, const char* name) : wnd(width, height, name){}
 
 int App::Start()
 {

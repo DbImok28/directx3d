@@ -1,5 +1,4 @@
 #include "WindowsMessageMap.hpp"
-#include <Windows.h>
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -14,9 +13,7 @@
 
 #define REGISTER_MESSAGE(msg){msg,#msg}
 
-WindowsMessageMap::WindowsMessageMap()
-	:
-	map({
+WindowsMessageMap::WindowsMessageMap():map({
 		REGISTER_MESSAGE(WM_CREATE),
 		REGISTER_MESSAGE(WM_DESTROY),
 		REGISTER_MESSAGE(WM_MOVE),
@@ -197,8 +194,7 @@ WindowsMessageMap::WindowsMessageMap()
 		REGISTER_MESSAGE(WM_UAHDESTROYWINDOW),
 		REGISTER_MESSAGE(WM_DWMNCRENDERINGCHANGED),
 		REGISTER_MESSAGE(WM_ENTERSIZEMOVE),
-		})
-{}
+		}){}
 
 std::string WindowsMessageMap::operator()(DWORD msg, LPARAM lParam, WPARAM wParam) const
 {
