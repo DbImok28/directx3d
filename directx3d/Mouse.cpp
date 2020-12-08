@@ -1,4 +1,5 @@
 #include "Mouse.hpp"
+#include <Windows.h>
 
 bool Mouse::Event::IsValid() const noexcept
 {
@@ -86,6 +87,20 @@ void Mouse::OnMouseLeave() noexcept
 	isInWindow = false;
 	buffer.push(Mouse::Event(Mouse::Event::Type::Leave, *this));
 	TrimBuffer();
+}
+void Mouse::OnWheelDelta(int x, int y, int delta) noexcept
+{
+	wheelDeltaCarry += delta;
+	while (wheelDeltaCarry >= WHEEL_DELTA)
+	{
+		wheelDeltaCarry -= WHEEL_DELTA;
+		OnWheelUp(x, y);
+	}
+	while (wheelDeltaCarry <= -WHEEL_DELTA)
+	{
+		wheelDeltaCarry += WHEEL_DELTA;
+		OnWheelDown(x, y);
+	}
 }
 void Mouse::OnMouseEnter() noexcept
 {

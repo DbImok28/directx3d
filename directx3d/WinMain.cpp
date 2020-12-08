@@ -22,13 +22,7 @@ int CALLBACK WinMain(
 	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) != FALSE)
 	{
 		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-		//if (wnd.mouse.RightIsPressed())
-		{
-			std::stringstream ss;
-			ss << '(' << wnd.mouse.IsInWindow() << ')' << std::endl;
-			wnd.SetTitle(ss.str());
-		}
+		DispatchMessage(&msg);		
 	}
 	if (gResult == -1)
 		return -1;
