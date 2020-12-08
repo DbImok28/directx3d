@@ -109,9 +109,15 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 		return 0;
 
 	// Keyboard
+	case WM_SYSKEYDOWN:
 	case WM_KEYDOWN:
-		kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
+		if (!(lParam & 0x40000000) || kbd.AutorepeatIsEnable()) // filter 
+			// (The previous key state. The value is 1 if the key is down before the message is sent, or it is zero if the key is up.)
+		{
+			kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
+		}
 		break;
+	case WM_SYSKEYUP:
 	case WM_KEYUP:
 		kbd.OnKeyReleased(static_cast<unsigned char>(wParam));
 		break;

@@ -23,7 +23,7 @@ int CALLBACK WinMain(
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
-		if (wnd.kbd.KeyIsPressed(VK_SPACE))
+		if (wnd.kbd.KeyIsPressed(VK_MENU))
 		{
 			MessageBox(nullptr, "bla-bla-bla", "aga", MB_OK);
 		}
