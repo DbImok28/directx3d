@@ -26,7 +26,7 @@ int CALLBACK WinMain(
 		//if (wnd.mouse.RightIsPressed())
 		{
 			std::stringstream ss;
-			ss << '(' << wnd.mouse.GetPosX() << " " << wnd.mouse.GetPosY() << ')' << std::endl;
+			ss << '(' << wnd.mouse.IsInWindow() << ')' << std::endl;
 			wnd.SetTitle(ss.str());
 		}
 	}
