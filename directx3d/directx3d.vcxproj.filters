@@ -16,6 +16,9 @@
     <Filter Include="system\keyboard">
       <UniqueIdentifier>{a9d6871b-ce63-44e1-bd54-f6158a05a547}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\mouse">
+      <UniqueIdentifier>{1b79e89c-bc54-471c-a034-9a909c6a7462}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -32,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>system\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>system\mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="Keyboard.hpp">
       <Filter>system\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.hpp">
+      <Filter>system\mouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

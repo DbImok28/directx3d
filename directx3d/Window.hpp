@@ -2,6 +2,7 @@
 #include "config.h"
 #include "EngineException.hpp"
 #include "Keyboard.hpp"
+#include "Mouse.hpp"
 
 class Window
 {
@@ -9,7 +10,7 @@ public:
 	class Exception : public EngineException
 	{
 	public:
-		Exception(int line, const char* file, HRESULT hr) noexcept;
+		Exception(int line, const char* file, HRESULT hr) noexcept : EngineException(line, file), hr(hr) {}
 		const char* what() const noexcept override;
 		virtual const char* GetType() const noexcept override;
 		static std::string TranslateErrorCode(HRESULT hr) noexcept;
@@ -45,7 +46,8 @@ private:
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 	LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 public:
-	Keyboard kbd;
+	Keyboard keyboard;
+	Mouse mouse;
 private:
 	int width;
 	int height;

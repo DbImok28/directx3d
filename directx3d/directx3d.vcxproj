@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="EngineException.cpp" />
     <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowsMessageMap.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="config.h" />
     <ClInclude Include="EngineException.hpp" />
     <ClInclude Include="Keyboard.hpp" />
+    <ClInclude Include="Mouse.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowsMessageMap.hpp" />
