@@ -2,7 +2,7 @@
 #include <exception>
 #include <sstream>
 #include "WindowsMessageMap.hpp"
-#include "Window.hpp"
+#include "App.hpp"
 #include "EngineException.hpp"
 
 
@@ -15,18 +15,7 @@ int CALLBACK WinMain(
 {
 	try
 	{
-	Window wnd(800, 600, "directWindow");
-
-	MSG msg;
-	BOOL gResult;
-	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) != FALSE)
-	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);		
-	}
-	if (gResult == -1)
-		return -1;
-	return 0;
+		return App{}.Start();
 	}
 	catch (const EngineException& e)
 	{

@@ -41,7 +41,7 @@ HINSTANCE Window::WindowClass::GetInstance() noexcept
 
 
 // Window Stuff
-Window::Window(int width, int height, const char* name) noexcept : width(width), height(height)
+Window::Window(int width, int height, const char* name) : width(width), height(height)
 {
 	// calculate window size based on desired client region size
 	RECT wr;

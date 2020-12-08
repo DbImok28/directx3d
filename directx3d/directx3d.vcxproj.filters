@@ -19,6 +19,9 @@
     <Filter Include="system\mouse">
       <UniqueIdentifier>{1b79e89c-bc54-471c-a034-9a909c6a7462}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\app">
+      <UniqueIdentifier>{c2d08317-4aec-4f5f-8a8b-d9c98747d1ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -38,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>system\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>system\app</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="Mouse.hpp">
       <Filter>system\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="App.hpp">
+      <Filter>system\app</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
