@@ -41,17 +41,15 @@ HINSTANCE Window::WindowClass::GetInstance() noexcept
 
 
 // Window Stuff
-Window::Window(int width, int height, const char* name) noexcept
+Window::Window(int width, int height, const char* name) noexcept : width(width), height(height)
 {
-	this->width = width;
-	this->height = height;
 	// calculate window size based on desired client region size
 	RECT wr;
 	wr.left = 100;
 	wr.right = width + wr.left;
 	wr.top = 100;
 	wr.bottom = height + wr.top;
-	if(FAILED((&wr, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE)))
+	if(AdjustWindowRect(&wr, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE) == 0)
 		throw WND_LAST_EXCEPT();
 	// create window & get hWnd
 	hWnd = CreateWindow(
@@ -69,6 +67,14 @@ Window::Window(int width, int height, const char* name) noexcept
 Window::~Window()
 {
 	DestroyWindow(hWnd);
+}
+
+void Window::SetTitle(const std::string title)
+{
+	if (SetWindowText(hWnd, title.c_str()) == 0)
+	{
+		throw WND_LAST_EXCEPT();
+	}
 }
 
 LRESULT CALLBACK Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept

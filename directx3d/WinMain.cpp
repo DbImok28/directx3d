@@ -23,9 +23,11 @@ int CALLBACK WinMain(
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
-		if (wnd.keyboard.KeyIsPressed(VK_MENU))
+		//if (wnd.mouse.RightIsPressed())
 		{
-			MessageBox(nullptr, "bla-bla-bla", "aga", MB_OK);
+			std::stringstream ss;
+			ss << '(' << wnd.mouse.GetPosX() << " " << wnd.mouse.GetPosY() << ')' << std::endl;
+			wnd.SetTitle(ss.str());
 		}
 	}
 	if (gResult == -1)
