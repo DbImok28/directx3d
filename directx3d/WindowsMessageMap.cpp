@@ -13,7 +13,7 @@
 
 #define REGISTER_MESSAGE(msg){msg,#msg}
 
-WindowsMessageMap::WindowsMessageMap():map({
+WindowsMessageMap::WindowsMessageMap() noexcept :map({
 		REGISTER_MESSAGE(WM_CREATE),
 		REGISTER_MESSAGE(WM_DESTROY),
 		REGISTER_MESSAGE(WM_MOVE),
@@ -146,15 +146,6 @@ WindowsMessageMap::WindowsMessageMap():map({
 		REGISTER_MESSAGE(WM_QUERYNEWPALETTE),
 		REGISTER_MESSAGE(WM_PALETTEISCHANGING),
 		REGISTER_MESSAGE(WM_PALETTECHANGED),
-		REGISTER_MESSAGE(WM_DDE_INITIATE),
-		REGISTER_MESSAGE(WM_DDE_TERMINATE),
-		REGISTER_MESSAGE(WM_DDE_ADVISE),
-		REGISTER_MESSAGE(WM_DDE_UNADVISE),
-		REGISTER_MESSAGE(WM_DDE_ACK),
-		REGISTER_MESSAGE(WM_DDE_DATA),
-		REGISTER_MESSAGE(WM_DDE_REQUEST),
-		REGISTER_MESSAGE(WM_DDE_POKE),
-		REGISTER_MESSAGE(WM_DDE_EXECUTE),
 		REGISTER_MESSAGE(WM_DROPFILES),
 		REGISTER_MESSAGE(WM_POWER),
 		REGISTER_MESSAGE(WM_WINDOWPOSCHANGED),
@@ -196,7 +187,7 @@ WindowsMessageMap::WindowsMessageMap():map({
 		REGISTER_MESSAGE(WM_ENTERSIZEMOVE),
 		}){}
 
-std::string WindowsMessageMap::operator()(DWORD msg, LPARAM lParam, WPARAM wParam) const
+std::string WindowsMessageMap::operator()(DWORD msg, LPARAM lParam, WPARAM wParam) const noexcept
 {
 	constexpr int firstColWidth = 25;
 	const auto i = map.find(msg);
