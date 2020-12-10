@@ -52,6 +52,9 @@
       <Filter>system\Timer</Filter>
     </ClCompile>
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="dxerr.cpp">
+      <Filter>system\exception</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -82,6 +85,9 @@
       <Filter>system\Timer</Filter>
     </ClInclude>
     <ClInclude Include="Graphics.hpp" />
+    <ClInclude Include="dxerr.h">
+      <Filter>system\exception</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx_12_logo.ico">
@@ -92,5 +98,16 @@
     <ResourceCompile Include="directx3d.rc">
       <Filter>system\resources</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXGetErrorString.inl">
+      <Filter>system\exception</Filter>
+    </None>
+    <None Include="DXTrace.inl">
+      <Filter>system\exception</Filter>
+    </None>
+    <None Include="DXGetErrorDescription.inl">
+      <Filter>system\exception</Filter>
+    </None>
   </ItemGroup>
 </Project>

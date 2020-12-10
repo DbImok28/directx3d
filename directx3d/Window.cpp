@@ -78,7 +78,7 @@ void Window::SetTitle(const std::string title)
 	}
 }
 
-std::optional<int> Window::ProcessMessages()
+std::optional<int> Window::ProcessMessages() noexcept
 {
 	MSG msg;
 
@@ -95,6 +95,10 @@ std::optional<int> Window::ProcessMessages()
 
 Graphics& Window::GetGraphics()
 {
+	if (!pGraphics)
+	{
+		throw WND_NOGFX_EXCEPT();
+	}
 	return *pGraphics;
 }
 
@@ -216,20 +220,20 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 
-const char* Window::Exception::what() const noexcept
+const char* Window::HrException::what() const noexcept
 {
-	
-	std::stringstream oss;
+	std::ostringstream oss;
 	oss << GetType() << std::endl
-		<< "[Error Code] " << GetErrorCode() << std::endl
-		<< "[Description ]" << GetErrorString() // << std::endl
+		<< "[Error Code] 0x" << std::hex << std::uppercase << GetErrorCode()
+		<< std::dec << " (" << (unsigned long)GetErrorCode() << ")" << std::endl
+		<< "[Description] " << GetErrorDescription() << std::endl
 		<< GetOriginString();
 	whatBuffer = oss.str();
 	return whatBuffer.c_str();
 
 }
 
-const char* Window::Exception::GetType() const noexcept
+const char* Window::HrException::GetType() const noexcept
 {
 	return "Window Engine Exception";
 }
@@ -252,12 +256,17 @@ std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept
 	return errorString;
 }
 
-HRESULT Window::Exception::GetErrorCode() const noexcept
+HRESULT Window::HrException::GetErrorCode() const noexcept
 {
 	return hr;
 }
 
-std::string Window::Exception::GetErrorString() const noexcept
+std::string Window::HrException::GetErrorDescription() const noexcept
 {
 	return TranslateErrorCode(hr);
+}
+
+const char* Window::NoGraphicsException::GetType() const noexcept
+{
+	return "Window Engine Exception (No Graphics)";
 }

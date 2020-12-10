@@ -160,6 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="EngineException.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Keyboard.cpp" />
@@ -172,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="dxerr.h" />
     <ClInclude Include="EngineException.hpp" />
     <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="Keyboard.hpp" />
@@ -186,6 +188,11 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="directx3d.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXGetErrorDescription.inl" />
+    <None Include="DXGetErrorString.inl" />
+    <None Include="DXTrace.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
