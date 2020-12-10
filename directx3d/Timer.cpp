@@ -9,7 +9,7 @@ float Timer::Mark() noexcept
 {
 	const auto old = last;
 	last = std::chrono::steady_clock::now();
-	return (last - old).count();
+	return static_cast<float>((last - old).count());
 }
 
 float Timer::Peek() const noexcept

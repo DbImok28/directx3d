@@ -22,6 +22,9 @@
     <Filter Include="system\app">
       <UniqueIdentifier>{c2d08317-4aec-4f5f-8a8b-d9c98747d1ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Timer">
+      <UniqueIdentifier>{fe59dea9-f7b1-4556-8a0e-f6b5520d117f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -45,7 +48,10 @@
     <ClCompile Include="App.cpp">
       <Filter>system\app</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Timer.cpp">
+      <Filter>system\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -72,7 +78,10 @@
     <ClInclude Include="App.hpp">
       <Filter>system\app</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.hpp" />
+    <ClInclude Include="Timer.hpp">
+      <Filter>system\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx_12_logo.ico">
