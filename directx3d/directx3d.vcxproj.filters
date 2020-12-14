@@ -55,6 +55,9 @@
     <ClCompile Include="dxerr.cpp">
       <Filter>system\exception</Filter>
     </ClCompile>
+    <ClCompile Include="DxgiInfoManager.cpp">
+      <Filter>system\exception</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="dxerr.h">
+      <Filter>system\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="DxgiInfoManager.hpp">
       <Filter>system\exception</Filter>
     </ClInclude>
   </ItemGroup>

@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="dxerr.cpp" />
+    <ClCompile Include="DxgiInfoManager.cpp" />
     <ClCompile Include="EngineException.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Keyboard.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="App.hpp" />
     <ClInclude Include="config.h" />
     <ClInclude Include="dxerr.h" />
+    <ClInclude Include="DxgiInfoManager.hpp" />
     <ClInclude Include="EngineException.hpp" />
     <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="Keyboard.hpp" />
