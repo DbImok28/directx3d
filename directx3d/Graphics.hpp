@@ -3,6 +3,7 @@
 #include "EngineException.hpp"
 #include <d3d11.h>
 #include "DxgiInfoManager.hpp"
+#include <wrl.h>
 
 class Graphics
 {
@@ -42,7 +43,7 @@ public:
 	Graphics(HWND hWnd);
 	Graphics(const Graphics&) = delete;
 	Graphics& operator=(const Graphics&) = delete;
-	~Graphics();
+	~Graphics() = default;
 	void EndFrame();
 	void ClearBuffer(float red, float green, float blue) noexcept;
 private:
@@ -50,9 +51,9 @@ private:
 	DxgiInfoManager infoManager;
 #endif // !NDEBUG
 
-	ID3D11Device* pDevice = nullptr;
-	IDXGISwapChain* pSwapChain = nullptr;
-	ID3D11DeviceContext* pContext = nullptr;
-	ID3D11RenderTargetView* pTarget = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11Device> pDevice;
+	Microsoft::WRL::ComPtr <IDXGISwapChain> pSwapChain;
+	Microsoft::WRL::ComPtr <ID3D11DeviceContext> pContext;
+	Microsoft::WRL::ComPtr <ID3D11RenderTargetView> pTarget;
 };
 

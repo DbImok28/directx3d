@@ -25,6 +25,9 @@
     <Filter Include="system\Timer">
       <UniqueIdentifier>{fe59dea9-f7b1-4556-8a0e-f6b5520d117f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\graphic">
+      <UniqueIdentifier>{f183912a-a0aa-4fe3-9e3f-4d319fcac33c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -51,12 +54,14 @@
     <ClCompile Include="Timer.cpp">
       <Filter>system\Timer</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="dxerr.cpp">
       <Filter>system\exception</Filter>
     </ClCompile>
     <ClCompile Include="DxgiInfoManager.cpp">
       <Filter>system\exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>system\graphic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,12 +92,14 @@
     <ClInclude Include="Timer.hpp">
       <Filter>system\Timer</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="dxerr.h">
       <Filter>system\exception</Filter>
     </ClInclude>
     <ClInclude Include="DxgiInfoManager.hpp">
       <Filter>system\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.hpp">
+      <Filter>system\graphic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
