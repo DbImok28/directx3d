@@ -28,6 +28,9 @@
     <Filter Include="system\graphic">
       <UniqueIdentifier>{f183912a-a0aa-4fe3-9e3f-4d319fcac33c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\shader">
+      <UniqueIdentifier>{93da10ef-f138-4c98-9472-f5599444a68a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -122,5 +125,13 @@
     <None Include="DXGetErrorDescription.inl">
       <Filter>system\exception</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>system\shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>system\shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
