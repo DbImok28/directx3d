@@ -98,7 +98,7 @@ void Graphics::ClearBuffer(float red, float green, float blue) noexcept
 	pContext->ClearRenderTargetView(pTarget.Get(), color);
 }
 
-void Graphics::DrawTestTriangle()
+void Graphics::DrawTestTriangle(float angle)
 {
 	HRESULT hr;
 	struct Vertex
@@ -123,7 +123,7 @@ void Graphics::DrawTestTriangle()
 		{-0.5f, -0.5f, 0,	0,		255,	0},
 		{-0.3f,  0.3f, 255, 0,		0,		0},
 		{ 0.3f,  0.3f, 0,	255,	0,		255},
-		{ 0.0f,  0.8f, 0,	255,	255,	0},
+		{ 0.0f,  -1.0f, 0,	255,	255,	0},
 	};
 
 	// create vertex buffer
@@ -149,8 +149,8 @@ void Graphics::DrawTestTriangle()
 		0,4,1,
 		2,1,5,
 	};
-	wrl::ComPtr<ID3D11Buffer> pIndexBuffer;
 
+	wrl::ComPtr<ID3D11Buffer> pIndexBuffer;
 	D3D11_BUFFER_DESC ibd = {};
 	ibd.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	ibd.Usage = D3D11_USAGE_DEFAULT;
@@ -158,7 +158,6 @@ void Graphics::DrawTestTriangle()
 	ibd.MiscFlags = 0u;
 	ibd.ByteWidth = sizeof(indices);
 	ibd.StructureByteStride = sizeof(unsigned short);
-
 	D3D11_SUBRESOURCE_DATA isd = {};
 	isd.pSysMem = indices;
 	GFX_THROW_INFO(pDevice->CreateBuffer(&ibd, &isd, &pIndexBuffer));
@@ -170,6 +169,39 @@ void Graphics::DrawTestTriangle()
 	const UINT stride = sizeof(Vertex);
 	const UINT offset = 0u;
 	pContext->IASetVertexBuffers(0u, 1u, pVertexBuffer.GetAddressOf(), &stride, &offset);
+
+	// create constant buffer
+
+	struct ConstantBuffer
+	{
+		struct 
+		{
+			float element[4][4];
+		} transformation;
+	};
+	const ConstantBuffer cb
+	{
+		{
+			(3.0f/4.0f)*std::cosf(angle),		std::sinf(angle),	0.0f,	0.0f,
+			(3.0f /4.0f)*-std::sinf(angle),		std::cosf(angle),	0.0f,	0.0f,
+			0.0f,								0.0f,				1.0f,	0.0f,
+			0.0f,								0.0f,				0.0f,	1.0f,
+		}
+	};
+	wrl::ComPtr<ID3D11Buffer> pConstantBuffer;
+	D3D11_BUFFER_DESC cbd = {};
+	cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	cbd.Usage = D3D11_USAGE_DYNAMIC;
+	cbd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	cbd.MiscFlags = 0u;
+	cbd.ByteWidth = sizeof(cb);
+	cbd.StructureByteStride = 0;
+	D3D11_SUBRESOURCE_DATA csd = {};
+	csd.pSysMem = &cb;
+	GFX_THROW_INFO(pDevice->CreateBuffer(&cbd, &csd, &pConstantBuffer));
+
+	// bind constant buffer
+	pContext->VSSetConstantBuffers(0u, 1u, pConstantBuffer.GetAddressOf());
 
 	// create pixel shader
 	wrl::ComPtr<ID3DBlob> pBlob;
