@@ -1,10 +1,6 @@
 #include "Mouse.hpp"
-#include <Windows.h>
+#include "config.h"
 
-bool Mouse::Event::IsValid() const noexcept
-{
-	return type != Type::Invalid;
-}
 Mouse::Event::Type Mouse::Event::GetType() const noexcept
 {
 	return type;
@@ -49,7 +45,7 @@ bool Mouse::RightIsPressed() const noexcept
 {
 	return rightIsPressed;
 }
-Mouse::Event Mouse::Read() noexcept
+std::optional<Mouse::Event> Mouse::Read() noexcept
 {
 	if (!buffer.empty())
 	{
@@ -57,10 +53,7 @@ Mouse::Event Mouse::Read() noexcept
 		buffer.pop();
 		return e;
 	}
-	else
-	{
-		return Mouse::Event();
-	}
+	return {};
 }
 bool Mouse::IsInWindow() const noexcept
 {

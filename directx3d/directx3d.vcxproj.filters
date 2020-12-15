@@ -13,12 +13,6 @@
     <Filter Include="system\resources">
       <UniqueIdentifier>{8d2f26a1-5703-482c-b0df-b1ba27382ad7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\keyboard">
-      <UniqueIdentifier>{a9d6871b-ce63-44e1-bd54-f6158a05a547}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="system\mouse">
-      <UniqueIdentifier>{1b79e89c-bc54-471c-a034-9a909c6a7462}</UniqueIdentifier>
-    </Filter>
     <Filter Include="system\app">
       <UniqueIdentifier>{c2d08317-4aec-4f5f-8a8b-d9c98747d1ce}</UniqueIdentifier>
     </Filter>
@@ -28,7 +22,16 @@
     <Filter Include="system\graphic">
       <UniqueIdentifier>{f183912a-a0aa-4fe3-9e3f-4d319fcac33c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\shader">
+    <Filter Include="system\input">
+      <UniqueIdentifier>{cb30823f-90df-4453-bb6d-52531e625ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\input\mouse">
+      <UniqueIdentifier>{1b79e89c-bc54-471c-a034-9a909c6a7462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\input\keyboard">
+      <UniqueIdentifier>{a9d6871b-ce63-44e1-bd54-f6158a05a547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\graphic\shader">
       <UniqueIdentifier>{93da10ef-f138-4c98-9472-f5599444a68a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -46,10 +49,10 @@
       <Filter>system\exception</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
-      <Filter>system\keyboard</Filter>
+      <Filter>system\input\keyboard</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>system\mouse</Filter>
+      <Filter>system\input\mouse</Filter>
     </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>system\app</Filter>
@@ -84,10 +87,10 @@
       <Filter>system\window</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.hpp">
-      <Filter>system\keyboard</Filter>
+      <Filter>system\input\keyboard</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.hpp">
-      <Filter>system\mouse</Filter>
+      <Filter>system\input\mouse</Filter>
     </ClInclude>
     <ClInclude Include="App.hpp">
       <Filter>system\app</Filter>
@@ -128,10 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="VertexShader.hlsl">
-      <Filter>system\shader</Filter>
+      <Filter>system\graphic\shader</Filter>
     </FxCompile>
     <FxCompile Include="PixelShader.hlsl">
-      <Filter>system\shader</Filter>
+      <Filter>system\graphic\shader</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
