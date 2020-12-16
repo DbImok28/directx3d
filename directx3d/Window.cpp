@@ -1,12 +1,11 @@
 #include "Window.hpp"
-#include <sstream>
+#include "WindowThrowMacros.h"
 #include "resource.h"
+#include <sstream>
 
 Window::WindowClass Window::WindowClass::wndClass;
 
-Window::WindowClass::WindowClass() noexcept
-	:
-	hInst(GetModuleHandle(nullptr))
+Window::WindowClass::WindowClass() noexcept : hInst(GetModuleHandle(nullptr))
 {
 	WNDCLASSEX wc = { 0 };
 	wc.cbSize = sizeof(wc);
@@ -39,7 +38,6 @@ HINSTANCE Window::WindowClass::GetInstance() noexcept
 	return wndClass.hInst;
 }
 
-// Window Stuff
 Window::Window(int width, int height, const char* name) : width(width), height(height)
 {
 	// calculate window size based on desired client region size

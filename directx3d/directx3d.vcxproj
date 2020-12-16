@@ -179,12 +179,14 @@
     <ClInclude Include="DxgiInfoManager.hpp" />
     <ClInclude Include="EngineException.hpp" />
     <ClInclude Include="Graphics.hpp" />
+    <ClInclude Include="GraphicsThrowMacros.h" />
     <ClInclude Include="Keyboard.hpp" />
     <ClInclude Include="Mouse.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Timer.hpp" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowsMessageMap.hpp" />
+    <ClInclude Include="WindowThrowMacros.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx_12_logo.ico" />

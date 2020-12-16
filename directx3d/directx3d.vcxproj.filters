@@ -110,6 +110,8 @@
     <ClInclude Include="base.h">
       <Filter>system</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicsThrowMacros.h" />
+    <ClInclude Include="WindowThrowMacros.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx_12_logo.ico">
