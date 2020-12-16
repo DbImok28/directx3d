@@ -107,6 +107,9 @@
     <ClInclude Include="Graphics.hpp">
       <Filter>system\graphic</Filter>
     </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>system</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx_12_logo.ico">

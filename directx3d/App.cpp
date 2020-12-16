@@ -6,6 +6,8 @@ App::App(int width, int height, const char* name) : wnd(width, height, name){}
 
 int App::Start()
 {
+
+
 	while (true)
 	{
 		if (const auto ecode = Window::ProcessMessages())
@@ -22,7 +24,7 @@ void App::Frame()
 	const float c = sin(timer.Peek()) / 2.0f + 0.5f;
 	wnd.GetGraphics().ClearBuffer(c, c, 1.0f);
 
-	wnd.GetGraphics().DrawTestTriangle(timer.Peek());
+	wnd.GetGraphics().DrawTestTriangle(timer.Peek(),wnd.mouse.GetPosX()/400.0f - 1.0f, -(wnd.mouse.GetPosY()/300.0f-1.0f));
 
 
 
