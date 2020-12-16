@@ -56,7 +56,7 @@ public:
 	~Graphics() = default;
 	void EndFrame();
 	void ClearBuffer(float red, float green, float blue) noexcept;
-	void DrawTestTriangle(float angle, float x, float y);
+	void DrawTestTriangle(float angle, float x, float y, float z);
 private:
 #ifndef NDEBUG
 	DxgiInfoManager infoManager;
@@ -66,5 +66,6 @@ private:
 	Microsoft::WRL::ComPtr <IDXGISwapChain> pSwapChain;
 	Microsoft::WRL::ComPtr <ID3D11DeviceContext> pContext;
 	Microsoft::WRL::ComPtr <ID3D11RenderTargetView> pTarget;
+	Microsoft::WRL::ComPtr <ID3D11DepthStencilView> pDSV;
 };
 
