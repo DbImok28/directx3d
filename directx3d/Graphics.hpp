@@ -1,20 +1,25 @@
 #pragma once
 #include "config.h"
 #include "EngineException.hpp"
-#include <d3d11.h>
 #include "DxgiInfoManager.hpp"
+#include <d3dcompiler.h>
+#include <DirectXMath.h>
+#include <d3d11.h>
 #include <wrl.h>
+#include <memory>
+#include <vector>
+#include <random>
 
 class Graphics
 {
+	friend class Bindable;
 public:
 	class Exception : public EngineException
 	{
 		using EngineException::EngineException;
 	};
 
-	// HRESULT Exception
-	class HrException : public Exception
+	class HrException : public Exception // HRESULT Exception
 	{
 	public:
 		HrException(int line, const char* file, HRESULT hr, std::vector<std::string> infoMsgs = {}) noexcept;
@@ -56,8 +61,11 @@ public:
 	~Graphics() = default;
 	void EndFrame();
 	void ClearBuffer(float red, float green, float blue) noexcept;
-	void DrawTestTriangle(float angle, float x, float y, float z);
+	void DrawIndexed(UINT count) noexcept(!IS_DEBUG);
+	void SetProjection(DirectX::FXMMATRIX proj) noexcept;
+	DirectX::XMMATRIX GetProjection() const noexcept;
 private:
+	DirectX::XMMATRIX projection;
 #ifndef NDEBUG
 	DxgiInfoManager infoManager;
 #endif // !NDEBUG

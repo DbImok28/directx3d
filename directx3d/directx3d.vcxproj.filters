@@ -1,145 +1,233 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="system">
+    <Filter Include="engine">
       <UniqueIdentifier>{bd97b26c-b76b-43a1-b69e-c9a9d1bda5fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\window">
+    <Filter Include="engine\window">
       <UniqueIdentifier>{b3e0c1a7-41f8-4d75-a838-a38275c9fad9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\exception">
+    <Filter Include="engine\exception">
       <UniqueIdentifier>{f88887ae-da4a-43be-a19e-42ede9d8d97e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\resources">
+    <Filter Include="engine\exception\macros">
+      <UniqueIdentifier>{41c85b9d-8c80-4180-acfc-2755507fcd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\exception\info">
+      <UniqueIdentifier>{9220b352-6d2e-428b-8c4b-47a132e62e3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\resources">
       <UniqueIdentifier>{8d2f26a1-5703-482c-b0df-b1ba27382ad7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\app">
+    <Filter Include="engine\app">
       <UniqueIdentifier>{c2d08317-4aec-4f5f-8a8b-d9c98747d1ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\Timer">
+    <Filter Include="engine\app\Timer">
       <UniqueIdentifier>{fe59dea9-f7b1-4556-8a0e-f6b5520d117f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\graphic">
+    <Filter Include="engine\graphic">
       <UniqueIdentifier>{f183912a-a0aa-4fe3-9e3f-4d319fcac33c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\input">
+    <Filter Include="engine\graphic\shader">
+      <UniqueIdentifier>{93da10ef-f138-4c98-9472-f5599444a68a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\graphic\drawable">
+      <UniqueIdentifier>{213611ef-e201-429d-baaf-b6b74422bf10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\input">
       <UniqueIdentifier>{cb30823f-90df-4453-bb6d-52531e625ef9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\input\mouse">
+    <Filter Include="engine\input\mouse">
       <UniqueIdentifier>{1b79e89c-bc54-471c-a034-9a909c6a7462}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\input\keyboard">
+    <Filter Include="engine\input\keyboard">
       <UniqueIdentifier>{a9d6871b-ce63-44e1-bd54-f6158a05a547}</UniqueIdentifier>
     </Filter>
-    <Filter Include="system\graphic\shader">
-      <UniqueIdentifier>{93da10ef-f138-4c98-9472-f5599444a68a}</UniqueIdentifier>
+    <Filter Include="engine\bindable">
+      <UniqueIdentifier>{ea600ae1-6b43-41f9-b09e-0e1bbe23747f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\bindable\PixelShader">
+      <UniqueIdentifier>{d59c5ce8-cd4e-4d89-9f75-569031938cf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\bindable\VertexShader">
+      <UniqueIdentifier>{4ae87a52-1644-4558-9eb7-74dbe14cd171}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
-      <Filter>system\window</Filter>
+      <Filter>engine\window</Filter>
     </ClCompile>
     <ClCompile Include="WindowsMessageMap.cpp">
-      <Filter>system\window</Filter>
+      <Filter>engine\window</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>system\window</Filter>
+      <Filter>engine\window</Filter>
     </ClCompile>
     <ClCompile Include="EngineException.cpp">
-      <Filter>system\exception</Filter>
+      <Filter>engine\exception</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
-      <Filter>system\input\keyboard</Filter>
+      <Filter>engine\input\keyboard</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>system\input\mouse</Filter>
+      <Filter>engine\input\mouse</Filter>
     </ClCompile>
     <ClCompile Include="App.cpp">
-      <Filter>system\app</Filter>
+      <Filter>engine\app</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
-      <Filter>system\Timer</Filter>
-    </ClCompile>
-    <ClCompile Include="dxerr.cpp">
-      <Filter>system\exception</Filter>
-    </ClCompile>
-    <ClCompile Include="DxgiInfoManager.cpp">
-      <Filter>system\exception</Filter>
+      <Filter>engine\app\Timer</Filter>
     </ClCompile>
     <ClCompile Include="Graphics.cpp">
-      <Filter>system\graphic</Filter>
+      <Filter>engine\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="dxerr.cpp">
+      <Filter>engine\exception\info</Filter>
+    </ClCompile>
+    <ClCompile Include="DxgiInfoManager.cpp">
+      <Filter>engine\exception\info</Filter>
+    </ClCompile>
+    <ClCompile Include="Bindable.cpp">
+      <Filter>engine\bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>engine\graphic\drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Topology.cpp">
+      <Filter>engine\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>engine\bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout.cpp">
+      <Filter>engine\bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformCbuf.cpp">
+      <Filter>engine\bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>engine\bindable\PixelShader</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>engine\bindable\VertexShader</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>engine\bindable\VertexShader</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>engine\graphic\drawable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
-      <Filter>system</Filter>
+      <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="EngineException.hpp">
-      <Filter>system\exception</Filter>
+      <Filter>engine\exception</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>system\resources</Filter>
+      <Filter>engine\resources</Filter>
     </ClInclude>
     <ClInclude Include="Window.hpp">
-      <Filter>system\window</Filter>
+      <Filter>engine\window</Filter>
     </ClInclude>
     <ClInclude Include="WindowsMessageMap.hpp">
-      <Filter>system\window</Filter>
+      <Filter>engine\window</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.hpp">
-      <Filter>system\input\keyboard</Filter>
+      <Filter>engine\input\keyboard</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.hpp">
-      <Filter>system\input\mouse</Filter>
+      <Filter>engine\input\mouse</Filter>
     </ClInclude>
     <ClInclude Include="App.hpp">
-      <Filter>system\app</Filter>
+      <Filter>engine\app</Filter>
     </ClInclude>
     <ClInclude Include="Timer.hpp">
-      <Filter>system\Timer</Filter>
-    </ClInclude>
-    <ClInclude Include="dxerr.h">
-      <Filter>system\exception</Filter>
-    </ClInclude>
-    <ClInclude Include="DxgiInfoManager.hpp">
-      <Filter>system\exception</Filter>
+      <Filter>engine\app\Timer</Filter>
     </ClInclude>
     <ClInclude Include="Graphics.hpp">
-      <Filter>system\graphic</Filter>
+      <Filter>engine\graphic</Filter>
     </ClInclude>
     <ClInclude Include="base.h">
-      <Filter>system</Filter>
+      <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsThrowMacros.h" />
-    <ClInclude Include="WindowThrowMacros.h" />
+    <ClInclude Include="GraphicsThrowMacros.h">
+      <Filter>engine\exception\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowThrowMacros.h">
+      <Filter>engine\exception\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="dxerr.h">
+      <Filter>engine\exception\info</Filter>
+    </ClInclude>
+    <ClInclude Include="DxgiInfoManager.hpp">
+      <Filter>engine\exception\info</Filter>
+    </ClInclude>
+    <ClInclude Include="Bindable.hpp">
+      <Filter>engine\bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffers.hpp">
+      <Filter>engine\bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.hpp">
+      <Filter>engine\graphic\drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology.hpp">
+      <Filter>engine\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.hpp">
+      <Filter>engine\bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.hpp">
+      <Filter>engine\bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformCbuf.hpp">
+      <Filter>engine\bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.hpp">
+      <Filter>engine\bindable\PixelShader</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.hpp">
+      <Filter>engine\bindable\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.hpp">
+      <Filter>engine\bindable\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="BindableBase.hpp">
+      <Filter>engine\bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.hpp">
+      <Filter>engine\graphic\drawable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx_12_logo.ico">
-      <Filter>system\resources</Filter>
+      <Filter>engine\resources</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="directx3d.rc">
-      <Filter>system\resources</Filter>
+      <Filter>engine\resources</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DXGetErrorDescription.inl">
+      <Filter>engine\exception\info</Filter>
+    </None>
     <None Include="DXGetErrorString.inl">
-      <Filter>system\exception</Filter>
+      <Filter>engine\exception\info</Filter>
     </None>
     <None Include="DXTrace.inl">
-      <Filter>system\exception</Filter>
-    </None>
-    <None Include="DXGetErrorDescription.inl">
-      <Filter>system\exception</Filter>
+      <Filter>engine\exception\info</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="VertexShader.hlsl">
-      <Filter>system\graphic\shader</Filter>
+      <Filter>engine\graphic\shader</Filter>
     </FxCompile>
     <FxCompile Include="PixelShader.hlsl">
-      <Filter>system\graphic\shader</Filter>
+      <Filter>engine\graphic\shader</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

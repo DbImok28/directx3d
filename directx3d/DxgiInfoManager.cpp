@@ -1,5 +1,6 @@
 #include "DxgiInfoManager.hpp"
 #include "Window.hpp"
+#include "WindowThrowMacros.h"
 #include "Graphics.hpp"
 #include <dxgidebug.h>
 #include <memory>
